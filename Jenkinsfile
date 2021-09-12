@@ -43,7 +43,7 @@ pipeline {
                    
                     sh 'echo Deploying the ecs service using Cloudformation...'                    
                     sh 'aws cloudformation create-stack \
-                            --stack-name production \
+                            --stack-name ecs-service \
                             --template-body file://src/ecs/service.yml' 
                     sh 'echo Deploying the ecs service using Cloudformation complete.'
                    

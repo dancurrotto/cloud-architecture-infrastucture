@@ -9,7 +9,10 @@ pipeline {
         stage('hello AWS') {
             steps {
                 withAWS(credentials: 'd36307c6-83c6-4f78-b415-a8af2b648f54', region: 'us-east-2') {
-                    sh 's3 ls'
+                    sh 'aws s3 ls'
+                    s3Upload acl: 'Private', bucket: 'kb-test-bucket', file: 'hello.txt'
+                    s3Download bucket: 'kb-bucket', file: 'downloadedHello.txt', path: 'hello.txt'
+                    sh 'cat downloadedHello.txt'
                 }
             }
         }

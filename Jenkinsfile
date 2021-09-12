@@ -27,6 +27,7 @@ pipeline {
                 sh 'echo $WORKSPACE'
                 sh 'echo $AWS_ACCESS_KEY_ID'
                 sh 'echo $PATH'
+                sh 'aws --version'
                 sh '~/.local/bin/aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
                 sh '~/.local/bin/aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
                 sh '~/.local/bin/aws configure set region us-east-2'

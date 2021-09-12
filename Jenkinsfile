@@ -32,14 +32,20 @@ pipeline {
                     sh 'aws configure set region us-east-2'
                     sh 'aws configure set output json'  
 
+                    /*
                     sh 'echo Deploying the network using Cloudformation...'
-
                     sh 'aws cloudformation create-stack \
                             --stack-name network-with-vpc \
                             --template-body file://src/ecs/network-with-vpc.yml \
                             --capabilities CAPABILITY_IAM' 
-
                     sh 'echo Deploying the network using Cloudformation complete.'
+                    */
+                    
+                    sh 'echo Deploying the ecs service using Cloudformation...'                    
+                    sh 'aws cloudformation create-stack \
+                            --stack-name production \
+                            --template-body file://src/ecs/service.yml' 
+                    sh 'echo Deploying the ecs service using Cloudformation complete.'
                 }
             }
             

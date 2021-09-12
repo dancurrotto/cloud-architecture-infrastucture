@@ -36,7 +36,8 @@ pipeline {
 
                     sh 'aws cloudformation create-stack \
                             --stack-name network-with-vpc \
-                            --template-body file://src/ecs/network-with-vpc.yml'
+                            --template-body file://src/ecs/network-with-vpc.yml \
+                            --capabilities CAPABILITY_IAM' 
 
                     sh 'echo Deploying the network using Cloudformation complete.'
                 }

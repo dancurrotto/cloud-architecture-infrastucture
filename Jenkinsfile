@@ -6,7 +6,7 @@ pipeline {
                 ETAG=''
     }
     stages {
-        stage('Build'){
+        stage('Build'){            
             steps{
                 withCredentials([usernamePassword(credentialsId: 'd36307c6-83c6-4f78-b415-a8af2b648f54', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     // available as an env variable, but will be masked if you try to print it out any which way
@@ -17,9 +17,6 @@ pipeline {
                     // or inside double quotes for string interpolation
                     echo "username is $USERNAME"
                 }
-            }
-            
-            steps{
                 sh 'echo building...'
                 git url: 'https://github.com/dancurrotto/cloud-architecture-infrastucture.git'
             }

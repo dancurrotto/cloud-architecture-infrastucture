@@ -9,7 +9,7 @@ pipeline {
         stage('Build'){            
             steps{
                
-                // sh 'echo building...'
+                sh 'echo building...'
                 // git url: 'https://github.com/dancurrotto/cloud-architecture-infrastucture.git'
             }
         }

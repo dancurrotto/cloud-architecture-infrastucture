@@ -6,18 +6,16 @@ pipeline {
                 ETAG=''
     }
     stages {
-        stage('hello AWS') {
-            steps {
-                withAwsCli(
-                    credentials: 'd36307c6-83c6-4f78-b415-a8af2b648f54', 
-                    region: 'us-east-2') {
-
-                    sh 'aws s3 ls'
-                }
-            }
-        }
-        /*
         stage('Build'){
+            withCredentials([usernamePassword(credentialsId: 'd36307c6-83c6-4f78-b415-a8af2b648f54', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                // available as an env variable, but will be masked if you try to print it out any which way
+                // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
+                sh 'echo $PASSWORD'
+                // also available as a Groovy variable
+                echo USERNAME
+                // or inside double quotes for string interpolation
+                echo "username is $USERNAME"
+            }
             steps{
                 sh 'echo building...'
                 git url: 'https://github.com/dancurrotto/cloud-architecture-infrastucture.git'
@@ -34,14 +32,12 @@ pipeline {
                 sh '~/.local/bin/aws configure set region us-east-2'
                 sh '~/.local/bin/aws configure set output json'  
 
-                sh 'echo Listing s3 buckets...'
-                sh '~/.local/bin/aws aws s3 ls'              
+                    
                 
                
                 
             }
             
         }
-        */
     }
 }

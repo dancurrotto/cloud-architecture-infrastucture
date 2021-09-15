@@ -13,6 +13,7 @@ pipeline {
                 // git url: 'https://github.com/dancurrotto/cloud-architecture-infrastucture.git'
             }
         }
+        /*
         stage('Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -40,16 +41,16 @@ pipeline {
                             --capabilities CAPABILITY_IAM' 
                     sh 'echo Deploying the network using Cloudformation complete.'
                    
-                   /*
+                   
                     sh 'echo Deploying the ecs service using Cloudformation...'                    
                     sh 'aws cloudformation create-stack \
                             --stack-name ecs-service \
                             --template-body file://src/ecs/service.yml' 
-                    sh 'echo Deploying the ecs service using Cloudformation complete.'*/
+                    sh 'echo Deploying the ecs service using Cloudformation complete.'*
                    
                 }
             }
             
-        }
+        }*/
     }
 }

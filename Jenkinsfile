@@ -13,7 +13,6 @@ pipeline {
                 // git url: 'https://github.com/dancurrotto/cloud-architecture-infrastucture.git'
             }
         }
-        /*
         stage('Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -51,6 +50,6 @@ pipeline {
                 }
             }
             
-        }*/
+        }
     }
 }

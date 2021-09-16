@@ -33,11 +33,13 @@ pipeline {
                     sh 'aws configure set output json'  
 
 
-                    sh 'if ! aws cloudformation describe-stacks --stack-name production ; then \
-                            echo -e "Stack does not exist, creating network(production) stack..." \
+                    sh '''
+                        if ! aws cloudformation describe-stacks --stack-name production ; then 
+                            echo -e "Stack does not exist, creating network(production) stack..." 
                         else \
                             echo -e "Stack exists, attempting updating network(production) stack ..."                  
-                        fi'
+                        fi
+                        '''
 
                     /*
                     sh 'aws cloudformation describe-stacks --stack-name production --query Stacks[].Outputs[*].[OutputKey,OutputValue] --output text'

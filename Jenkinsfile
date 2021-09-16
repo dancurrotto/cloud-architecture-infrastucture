@@ -32,6 +32,14 @@ pipeline {
                     sh 'aws configure set region us-east-2'
                     sh 'aws configure set output json'  
 
+
+                    sh 'if ! aws cloudformation describe-stacks --stack-name production ; then \
+                            echo -e "\nStack does not exist, creating network(production) stack..." \
+                        else \
+                            echo -e "\nStack exists, attempting updating network(production) stack ..." \                  
+                        fi'
+
+                    /*
                     sh 'aws cloudformation describe-stacks --stack-name production --query Stacks[].Outputs[*].[OutputKey,OutputValue] --output text'
 
                     if ! aws cloudformation describe-stacks --stack-name production ; then
@@ -60,6 +68,7 @@ pipeline {
                     else
                         echo -e "\nStack exists, attempting updating ecs-service stack ..."
                     fi
+                    */
                 }
             }
             

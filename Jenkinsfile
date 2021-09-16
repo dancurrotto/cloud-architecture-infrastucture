@@ -45,7 +45,7 @@ pipeline {
                     sh 'aws cloudformation create-stack \
                             --stack-name ecs-service \
                             --template-body file://src/ecs/service.yml' 
-                    sh 'echo Deploying the ecs service using Cloudformation complete.'*
+                    sh 'echo Deploying the ecs service using Cloudformation complete.'
                    
                 }
             }

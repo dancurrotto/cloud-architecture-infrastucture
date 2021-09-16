@@ -34,7 +34,7 @@ pipeline {
 
                     sh 'aws cloudformation describe-stacks --stack-name production --query Stacks[].Outputs[*].[OutputKey,OutputValue] --output text'
 
-                    sh 'echo text'
+                   
 
                     /*
                     sh 'echo Deploying the network using Cloudformation...'

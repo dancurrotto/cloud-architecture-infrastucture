@@ -46,7 +46,15 @@ pipeline {
                                 --stack-name production
 
                         else \
-                            echo -e "Stack exists, attempting updating network(production) stack ..."                  
+                            echo -e "Stack exists, attempting updating network(production) stack ..."  
+
+                            aws cloudformation update-stack \
+                                --stack-name production \
+                                --template-body file://src/ecs/network-with-vpc.yml \
+                                --capabilities CAPABILITY_IAM   
+
+                            aws cloudformation wait stack-update-complete \
+                                --stack-name production             
                         fi
                         '''
 
@@ -61,10 +69,18 @@ pipeline {
 
                             aws cloudformation wait stack-create-complete \
                                 --stack-name ecs-service
-                                
+
                                 
                         else \
-                            echo -e "Stack exists, attempting updating ecs-service stack ..."                  
+                            echo -e "Stack exists, attempting updating ecs-service stack ..." 
+
+                            aws cloudformation update-stack \
+                                --stack-name ecs-service \
+                                --template-body file://src/ecs/network-with-vpc.yml \
+                                --capabilities CAPABILITY_IAM   
+
+                            aws cloudformation wait stack-update-complete \
+                                --stack-name ecs-service               
                         fi
                         '''
 

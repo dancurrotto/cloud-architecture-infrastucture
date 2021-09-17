@@ -62,6 +62,7 @@ pipeline {
                             aws cloudformation wait stack-create-complete \
                                 --stack-name ecs-service
                                 
+                                
                         else \
                             echo -e "Stack exists, attempting updating ecs-service stack ..."                  
                         fi

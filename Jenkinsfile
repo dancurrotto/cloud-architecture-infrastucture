@@ -33,22 +33,7 @@ pipeline {
                     sh 'aws configure set output json'  
 
 
-                    sh '''
-                        if ! aws cloudformation describe-stacks --stack-name production ; then 
-                            // echo -e "Stack does not exist, creating network(production) stack..." \
-
-                            // echo creating the network using Cloudformation... \
-
-                            aws cloudformation create-stack \
-                                    --stack-name production \
-                                    --template-body file://src/ecs/network-with-vpc.yml \
-                                    --capabilities CAPABILITY_IAM' 
-
-                            // echo creating the network using Cloudformation complete. \
-                        else 
-                            // echo Stack exists, attempting updating network(production) stack ...                  
-                        fi
-                        '''
+                  
 
                    
                 }

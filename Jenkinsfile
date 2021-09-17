@@ -36,6 +36,12 @@ pipeline {
                     sh '''
                         if ! aws cloudformation describe-stacks --stack-name production ; then 
                             echo -e "Stack does not exist, creating network(production) stack..." 
+
+                            aws cloudformation create-stack \
+                                --stack-name production \
+                                --template-body file://src/ecs/network-with-vpc.yml \
+                                --capabilities CAPABILITY_IAM
+                                
                         else \
                             echo -e "Stack exists, attempting updating network(production) stack ..."                  
                         fi

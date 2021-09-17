@@ -41,9 +41,22 @@ pipeline {
                                 --stack-name production \
                                 --template-body file://src/ecs/network-with-vpc.yml \
                                 --capabilities CAPABILITY_IAM
-                                
+
                         else \
                             echo -e "Stack exists, attempting updating network(production) stack ..."                  
+                        fi
+                        '''
+
+                     sh '''
+                        if ! aws cloudformation describe-stacks --stack-name ecs-service ; then 
+                            echo -e "Stack does not exist, creating ecs-service stack..." 
+
+                            aws cloudformation create-stack \
+                                --stack-name ecs-service \
+                                --template-body file://src/ecs/network-with-vpc.yml 
+                                
+                        else \
+                            echo -e "Stack exists, attempting updating ecs-service stack ..."                  
                         fi
                         '''
 

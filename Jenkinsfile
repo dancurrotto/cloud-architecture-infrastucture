@@ -59,18 +59,18 @@ pipeline {
                             aws cloudformation create-stack \
                                     --stack-name production \
                                     --template-body file://src/ecs/network-with-vpc.yml \
-                                    --capabilities CAPABILITY_IAM' \
+                                    --capabilities CAPABILITY_IAM' 
 
                             echo creating the network using Cloudformation complete.
-                        else \
-                            echo -e "Stack exists, attempting updating network(production) stack ..."  \
+                        else 
+                            echo Stack exists, attempting updating network(production) stack ...  
 
-                            echo -e "\nStack does not exist, creating ecs-service stack..." \
+                            echo Stack does not exist, creating ecs-service stack... 
 
-                            echo creating the ecs service using Cloudformation... \                    
+                            echo creating the ecs service using Cloudformation...                     
                             aws cloudformation create-stack \
                                 --stack-name ecs-service \
-                                --template-body file://src/ecs/service.yml' \
+                                --template-body file://src/ecs/service.yml' 
                             echo creating the ecs service using Cloudformation complete.                
                         fi
                 }

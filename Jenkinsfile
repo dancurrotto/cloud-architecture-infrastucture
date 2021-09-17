@@ -73,6 +73,7 @@ pipeline {
                                 --template-body file://src/ecs/service.yml' 
                             echo creating the ecs service using Cloudformation complete.                
                         fi
+                        '''
                 }
             }
             

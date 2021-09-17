@@ -42,6 +42,9 @@ pipeline {
                                 --template-body file://src/ecs/network-with-vpc.yml \
                                 --capabilities CAPABILITY_IAM
 
+                            aws cloudformation wait stack-create-complete \
+                                --stack-name production
+
                         else \
                             echo -e "Stack exists, attempting updating network(production) stack ..."                  
                         fi
